@@ -12,7 +12,6 @@ export default function getPath(): string {
         let path1: string = createConstParamPath(parameters);
         let path2: string = coordinatsPath(x, y, 1000);
         let wholePath = concatApiPath(path1, path2);
-        //console.log(wholePath);
         return wholePath;
     }
     else alert('Некорректные данные');
