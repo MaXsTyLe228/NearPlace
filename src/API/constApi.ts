@@ -5,12 +5,8 @@ const firstPathApi: string = 'https://api.foursquare.com/v2/venues/search?'
 const pathApi: string = ''
 
 
-export { firstPathApi, client_id, client_secret, version, pathApi}
+export { firstPathApi, client_id, client_secret, version, pathApi }
 
-/*function getNearestPlace(x, y) {
-    return name
-}
+/*function getNearestPlace(x, y) {return name}
 
-function getPlaceInfo(x, y) {
-
-}*/
+function getPlaceInfo(x, y) {return obj}*/

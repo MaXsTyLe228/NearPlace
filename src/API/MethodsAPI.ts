@@ -1,7 +1,7 @@
 function coordinatsPath(x: number, y: number, limit: number = 500): string {
     return `&ll=${x},${y}&limit=${limit}`
 }
-//
+
 function concatApiPath(firstPathApi: string, pathApiPiece: string, limit?) {
     return firstPathApi + pathApiPiece
 }
