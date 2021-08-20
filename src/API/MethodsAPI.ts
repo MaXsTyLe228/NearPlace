@@ -1,8 +1,10 @@
-function coordinatsPath(x: number, y: number) {
-    return `&ll=${x},${y}`;
+function coordinatsPath(x: number, y: number, limit: number = 500) {
+    let path: string = `&ll=${x},${y}`;
+    path += `&limit=${limit}`
+    return path
 }
-
-function concatApiPath(firstPathApi: string, pathApiPiece: string) {
+//
+function concatApiPath(firstPathApi: string, pathApiPiece: string, limit?) {
     return firstPathApi + pathApiPiece
 }
 
@@ -15,4 +17,4 @@ function createConstParamPath(parametersObject): string {
     return pathPiece
 }
 
-export {coordinatsPath, concatApiPath, createConstParamPath}
+export { coordinatsPath, concatApiPath, createConstParamPath }

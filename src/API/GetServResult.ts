@@ -5,7 +5,8 @@ export default async function getResult(): Promise<any> {
     let response: Response = await fetch(path);
     if (response.ok) { // если HTTP-статус в диапазоне 200-299
         // получаем тело ответа
-        let json: any = await response.json();
+        let json: any = await response.text();
+        //console.log(json);
         return json;
     }
     else {

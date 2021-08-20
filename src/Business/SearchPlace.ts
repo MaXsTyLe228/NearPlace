@@ -1,19 +1,20 @@
 import getResult from '../API/GetServResult'
 
 export default async function searchPlace(): Promise<string> {
-    let res: any = await getResult();
-    let obj: any = res.response.venues;
-    if (obj[0] === undefined) {
+    let response: any = JSON.parse(await getResult());
+    let venues: any = response.response.venues;
+    console.log(response);
+    if (venues[0] === undefined) {
         return 'Рядом мест нет(';
     }
     else {
-        let distance: number = obj[0].location.distance;
+        let distance: number = venues[0].location.distance;
         let j: number = 0;
         //let arr: any;
-        for (let i in obj) {
-            if (distance >= obj[i].location.distance) {
+        for (let i in venues) {
+            if (distance >= venues[i].location.distance) {
                 //arr.push([obj[i].location.distance])
-                distance = obj[i].location.distance;
+                distance = venues[i].location.distance;
                 j = +i;
             }
         }
@@ -22,7 +23,7 @@ export default async function searchPlace(): Promise<string> {
             if(obj[i].location.distance===distance)
             console.log(obj[i]);
         }*/
-        let str: string = `Ближайшая точка: ${obj[j].name}\nРасстояние: ${obj[j].location.distance}\nТип: ${obj[j].categories[0].name}`;
+        let str: string = `Ближайшая точка: ${venues[j].name}\nРасстояние: ${venues[j].location.distance}\nТип: ${venues[j].categories[0].name}`;
         return str;
     }
 }
