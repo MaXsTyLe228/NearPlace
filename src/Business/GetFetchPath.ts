@@ -1,6 +1,6 @@
 import getX from '../UI/GetX';
 import getY from '../UI/GetY';
-import getApi from './GetApiPath'
+import getApi from '../API/GetApiPath'
 
 export default function getPath(): string {
     let x: string = getX();

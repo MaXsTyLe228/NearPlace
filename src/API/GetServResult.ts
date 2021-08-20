@@ -1,4 +1,5 @@
-import getPath from './GetFetchPath'
+import { pathApi } from './constApi';
+import getPath from '../Business/GetFetchPath'
 
 export default async function getResult(): Promise<any> {
     let path: string = getPath();

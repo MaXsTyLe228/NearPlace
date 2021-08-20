@@ -1,4 +1,5 @@
-import getResult from './GetServResult'
+import getResult from '../API/GetServResult'
+
 export default async function go(): Promise<string> {
     let res: any = await getResult();
     let obj: any = res.response.venues;
@@ -8,13 +9,15 @@ export default async function go(): Promise<string> {
     else {
         let distance: number = obj[0].location.distance;
         let j: number = 0;
-
+        //let arr: any;
         for (let i in obj) {
-            if (distance > obj[i].location.distance) {
+            if (distance >= obj[i].location.distance) {
+                //arr.push([obj[i].location.distance])
                 distance = obj[i].location.distance;
                 j = +i;
             }
         }
+        //console.log(arr);
         /*for (let i in obj) {
             if(obj[i].location.distance===distance)
             console.log(obj[i]);
