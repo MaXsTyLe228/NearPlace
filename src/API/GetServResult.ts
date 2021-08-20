@@ -1,4 +1,3 @@
-import { pathApi } from './constApi';
 import getPath from '../Business/GetFetchPath'
 
 export default async function getResult(): Promise<any> {
@@ -13,3 +12,13 @@ export default async function getResult(): Promise<any> {
         alert("Ошибка HTTP: " + response.status);
     }
 }
+
+
+/*function gentratePath(pathApi, createdPath): string {
+    return path
+}
+
+function d() {
+    let path: string = gentratePath(pathApi, createdPath);
+    
+}*/

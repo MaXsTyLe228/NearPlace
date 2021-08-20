@@ -1,6 +1,6 @@
 import getResult from '../API/GetServResult'
 
-export default async function go(): Promise<string> {
+export default async function searchPlace(): Promise<string> {
     let res: any = await getResult();
     let obj: any = res.response.venues;
     if (obj[0] === undefined) {
