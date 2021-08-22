@@ -4,7 +4,7 @@ export default async function getNearPlace(): Promise<string> {
     let responseJson: any = JSON.parse(await getResult());
     if (responseJson !== null) {
         let venues: any = responseJson.response.venues;
-        //console.log(responseJson);
+        console.log(venues);
         let place: string = '';
         if (venues[0] === undefined) {
             place = 'Рядом мест нет(';
@@ -14,8 +14,8 @@ export default async function getNearPlace(): Promise<string> {
             let position: number;
             let distarr = new Object();
             for (let i in venues) {
-                /*if (venues[i].location.distance < 150) {
-                    console.log(venues[i])
+                /*if (venues[i].location.distance < 150) {//для просмотра мест рядом
+                    console.log(venues[i].name, venues[i].location.distance)
                 }*/
                 if (distance >= venues[i].location.distance) {
                     distance = venues[i].location.distance;
@@ -30,13 +30,13 @@ export default async function getNearPlace(): Promise<string> {
                     //console.log(distance)
                     place += `Ближайшая точка: ${venues[i].name}\n` +
                         `Расстояние: ${venues[i].location.distance}\n`;
-                    if (venues[i].categories[0] !== undefined) {
+                    if (venues[i].categories[0] !== undefined) {//если присутстует категория
                         place += `Тип: ${venues[i].categories[0].name}\n`;
                     }
                 }
             }
 
         }
-        return place;//44.953435, 45.039815 -- coordinats for 2 places
+        return place;//48.467417227731005, 35.05174486808708 -- coordinats for 2 places
     }
 }
