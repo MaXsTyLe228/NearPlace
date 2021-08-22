@@ -8,6 +8,7 @@ export default async function getResult(): Promise<any> {
         return json;
     }
     else {
-        alert("Ошибка HTTP: " + response.status);
+        console.log("Ошибка HTTP: " + response.status);
+        return null;
     }
 }
