@@ -1,11 +1,7 @@
-import getNearPlace from './SearchPlace'
-import getButtonElement from '../UI/GetButton'
+import getButtonElement from '../UI/GetButton';
+import showPlace from './Show'
 
-export default function clickEventListener() {
+export default function clickEventListener() : void{
     let el: HTMLElement = getButtonElement()
-    el?.addEventListener("click", async () => {
-        let result: string = await getNearPlace();
-        if (result !== undefined)
-            alert(`${result}`)
-    });
+    el?.addEventListener("click", showPlace);
 }

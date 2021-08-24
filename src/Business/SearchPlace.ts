@@ -1,10 +1,8 @@
-import getResult from '../API/GetServResult'
-
-export default async function getNearPlace(): Promise<string> {
-    let responseJson: any = JSON.parse(await getResult());
+export default async function searchPlace(fn): Promise<string> {
+    let responseJson: any = JSON.parse(await fn);
     if (responseJson !== null) {
         let venues: any = responseJson.response.venues;
-        console.log(venues);
+        //console.log(venues);//показать все места рядом
         let place: string = '';
         if (venues[0] === undefined) {
             place = 'Рядом мест нет(';
@@ -12,7 +10,7 @@ export default async function getNearPlace(): Promise<string> {
         else {
             let distance: number = venues[0].location.distance;
             let position: number;
-            let distarr = new Object();
+            let distarr: object = new Object();
             for (let i in venues) {
                 /*if (venues[i].location.distance < 150) {//для просмотра мест рядом
                     console.log(venues[i].name, venues[i].location.distance)
@@ -20,7 +18,7 @@ export default async function getNearPlace(): Promise<string> {
                 if (distance >= venues[i].location.distance) {
                     distance = venues[i].location.distance;
                     position = +i;
-                    distarr[position] = distance;
+                    distarr[position] = distance;//обьект из индексов/дистанции по спаданию
                 }
             }
             //console.log(distarr);
@@ -35,7 +33,6 @@ export default async function getNearPlace(): Promise<string> {
                     }
                 }
             }
-
         }
         return place;//48.467417227731005, 35.05174486808708 -- coordinats for 2 places
     }
