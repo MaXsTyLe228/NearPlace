@@ -7,5 +7,5 @@ export default async function showPlace(): Promise<void> {
     let y: number = getY();
     let result: string = await getPlaceName(x, y);
     if (result !== undefined)
-        alert(`${result}`)
+        alert(result);
 }
