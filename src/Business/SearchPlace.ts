@@ -1,4 +1,4 @@
-let ciklePlaces = (venues, place = '') =>{
+function cyclePlaces(venues, place = '') {
     let distance: number = venues[0].location.distance;
     let position: number;
     let distarr: object = new Object();
@@ -35,7 +35,7 @@ export default function searchPlace(responseJson): string {
         if (venues[0] === undefined) {
             place = 'Рядом мест нет(';
         }
-        else { place = ciklePlaces(venues); }
+        else { place = cyclePlaces(venues); }
         return place;//48.467417227731005, 35.05174486808708 -- coordinats for 2 places
     }
 }
