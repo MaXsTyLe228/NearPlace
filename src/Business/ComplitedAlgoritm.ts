@@ -1,10 +1,12 @@
 import searchPlace from './SearchPlace'
-import getResult from '../API/GetServResult'
-import getPath from './GetFetchPath'
+import getNearestPlaces from '../API/MethodsAPI'
+import valideteCoordinats from './Validation'
 //поиск
-export default function getPlaceName(x, y) {
-    let path = getPath(x, y)
-    let result = getResult(path);
-    let placeName = searchPlace(result)
-    return placeName;
+export default async function getPlaceName(x, y) {
+    if (valideteCoordinats(x, y) === true) {
+        let result = await getNearestPlaces(x, y);
+        let placeName = searchPlace(result);
+        return placeName;
+    }
+    else console.log('Некорректные данные');
 }

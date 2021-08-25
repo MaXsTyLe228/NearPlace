@@ -1,4 +1,4 @@
-export default async function getResult(path: string): Promise<any> {
+export default async function getResult(path: string): Promise<string> {
     //let path: string = getPath();
     let response: Response = await fetch(path);
     if (response.ok) { // если HTTP-статус в диапазоне 200-299 получаем тело ответа
