@@ -8,9 +8,9 @@ export default async function showPlace(): Promise<void> {
     let y: number = getY();
     if (valideteCoordinats(x, y) === true) {
         let ll = `${x},${y}`
-        let photosstr = localStorage.getItem(ll);
-        if (!!photosstr) {
-            alert(photosstr)
+        let starageResult = localStorage.getItem(ll);
+        if (!!starageResult) {
+            alert(starageResult)
         }
         else {
             let parametrs = {
