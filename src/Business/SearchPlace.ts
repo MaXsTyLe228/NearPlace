@@ -1,14 +1,12 @@
-function findPlace(venues, place = '') {
+function findPlace(venues: any, radius: number = 250, place: string = '') {
     let distance: number = venues[0].location.distance;
     let accdistance: number = venues[0].location.distance;
     let position: number;
-    let distarr: object = new Object();
     for (let i in venues) {
-        if (venues[i].location.distance < 250) {
+        if (venues[i].location.distance < radius) {//в указанном радиусе
             if (distance >= venues[i].location.distance) {
                 distance = venues[i].location.distance;
                 position = +i;
-                distarr[position] = distance;//обьект из индексов/дистанции по спаданию
                 if (accdistance > distance) {
                     accdistance = distance;
                     place = `Ближайшая точка: ${venues[i].name}\n` +
@@ -26,7 +24,6 @@ function findPlace(venues, place = '') {
                 }
             }
         }
-        else { }
     }
     return place
 }
@@ -43,7 +40,7 @@ export default function searchPlace(responseJson): string {
             if (findPlace(venues) !== '') {
                 return findPlace(venues)
             }
-            else{
+            else {
                 return 'Рядом мест нет(';
             }
         }
