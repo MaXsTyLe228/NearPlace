@@ -1,12 +1,13 @@
 import getX from '../UI/GetX';
 import getY from '../UI/GetY';
-import getPlaceName from './ComplitedAlgoritm';
 import valideteCoordinats from './Validation';
+import searchPlace from './SearchPlace'
+import getNearestPlaces from '../API/MethodsAPI'
 //отображение
 export default async function showPlace(): Promise<void> {
     let x: number = getX();
     let y: number = getY();
-    if (valideteCoordinats(x, y) === true) {
+    if (!!valideteCoordinats(x, y)) {
         let ll = `${x},${y}`
         let starageResult = localStorage.getItem(ll);
         if (!!starageResult) {
@@ -18,10 +19,11 @@ export default async function showPlace(): Promise<void> {
                 limit: 500,
                 radius: 250,
             }
-            let result: string = await getPlaceName(parametrs);
-            localStorage.setItem(ll, result);
-            if (result !== undefined)
-                alert(result);
+            let result = await getNearestPlaces(parametrs);
+            let placeName = searchPlace(result);
+            localStorage.setItem(ll, placeName);
+            if (placeName !== undefined)
+                alert(placeName);
         }
     }
     else {
